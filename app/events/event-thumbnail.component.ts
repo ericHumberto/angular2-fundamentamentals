@@ -17,7 +17,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
             Online Url: {{event.onlineUrl}}
         </div>
         <div [hidden]="!event?.location">
-            <span>Location: {{event?.location.address}}</span>
+            <span>Location: {{event?.location?.address}}</span>
             <span class="pad-left">{{event?.location?.city}}, {{event?.location?.country}}</span>
         </div>        
     </div>
