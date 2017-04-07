@@ -1,31 +1,50 @@
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  templateUrl: 'app/user/profile.component.html'
+  templateUrl: 'app/user/profile.component.html',
+  styles: [`
+    em { float:right; color:#E05C65; padding-left: 10px; }
+    .error input { background-color: #E3C3C5; }
+  `]
 })
 export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
-
-  constructor(private authService: AuthService, private router: Router) { }
+  private firstName:FormControl
+  private lastName:FormControl
+  
+  constructor(private router:Router, private authService:AuthService) {
+    
+  }
 
   ngOnInit() {
-    let firstName = new FormControl(this.authService.currentUser.firstName);
-    let lastName = new FormControl(this.authService.currentUser.lastName);
-    this.profileForm = new FormGroup({
-      firstName: firstName,
-      lastName: lastName
-    });
-  }
+    this.firstName = new FormControl(this.authService.currentUser.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')]);
+    this.lastName = new FormControl(this.authService.currentUser.lastName, Validators.required);
 
-  saveProfile(profileValues) {
-    this.authService.updateCurrentUser(profileValues.firstName, profileValues.lastName)
-    this.router.navigate(['events']);
-  }
+    this.profileForm = new FormGroup({
+      firstName: this.firstName,
+      lastName: this.lastName,
+    })
+  } 
 
   cancel() {
     this.router.navigate(['events']);
+  }
+
+  validateFirstName() {
+    return this.firstName.valid || this.firstName.untouched
+  }
+
+  validateLastName() {
+    return this.lastName.valid || this.lastName.untouched
+  }
+
+  saveProfile(formValues) {
+    if(this.profileForm.valid) {
+      this.authService.updateCurrentUser(formValues.firstName, formValues.lastName)
+      this.router.navigate(['events']);
+    }
   }
 }
