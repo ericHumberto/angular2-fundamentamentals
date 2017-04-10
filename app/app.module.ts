@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { RouterModule } from '@angular/router'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { appRoutes } from './routes'
 import { ToastrService } from './common/toastr.service'
@@ -20,7 +21,10 @@ import {
 } from './events/index'
 
 @NgModule({
-    imports: [BrowserModule,
+    imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
         RouterModule.forRoot(appRoutes)
     ],
     declarations: [
