@@ -1,6 +1,9 @@
 <div class="row" *ngFor="let session of sessions">
-    <collapsible-well [title]="session.name">
-        <div class="well">
+    <collapsible-well>
+        <div well-title>
+            <h4 class="well-title">{{session.name}}</h4>
+        </div>
+        <div well-body>
             <h6>{{session.presenter}}</h6>
             <span>Duration: {{session.duration}}</span><br />
             <span>Level: {{session.level}}</span>
