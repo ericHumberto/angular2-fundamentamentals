@@ -9,6 +9,7 @@ import { NavBarComponent } from './nav/navbar.component'
 import { Error404Component } from './errors/404.component'
 import { EventsAppComponent } from './events-app.component'
 import { AuthService } from './user/auth.service';
+import { CollapsibleWellComponent } from './common/collapsible-well.component';
 
 import {
     EventsListComponent,
@@ -38,7 +39,8 @@ import {
         CreateEventComponent,
         Error404Component,
         CreateSessionComponent,
-        SessionListComponent
+        SessionListComponent,
+        CollapsibleWellComponent
     ],
     providers: [
         EventService,
