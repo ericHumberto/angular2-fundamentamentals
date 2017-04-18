@@ -4,12 +4,14 @@ import { RouterModule } from '@angular/router'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { appRoutes } from './routes'
-import { ToastrService } from './common/toastr.service'
+import { TOASTR_TOKEN, Toastr } from './common/toastr.service'
 import { NavBarComponent } from './nav/navbar.component'
 import { Error404Component } from './errors/404.component'
 import { EventsAppComponent } from './events-app.component'
 import { AuthService } from './user/auth.service';
 import { CollapsibleWellComponent } from './common/collapsible-well.component';
+
+declare let toastr: Toastr;
 
 import {
     EventsListComponent,
@@ -46,7 +48,10 @@ import {
     ],
     providers: [
         EventService,
-        ToastrService,
+        {
+            provide: TOASTR_TOKEN,
+            useValue: toastr
+        },
         EventRouteActivator,
         EventListResolver,
         {
