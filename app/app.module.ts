@@ -14,7 +14,8 @@ import {
     Toastr,
     JQ_TOKEN,
     CollapsibleWellComponent,
-    SimpleModalComponent
+    SimpleModalComponent,
+    ModalTriggerDirective
 } from './common/index'
 
 import {
@@ -52,7 +53,8 @@ declare let jquery: Object;
         SessionListComponent,
         CollapsibleWellComponent,
         DurationPipe,
-        SimpleModalComponent
+        SimpleModalComponent,
+        ModalTriggerDirective
     ],
     providers: [
         EventService,
