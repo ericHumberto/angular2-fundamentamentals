@@ -30,7 +30,8 @@ import {
     SessionListComponent,
     DurationPipe,
     UpVoteComponent,
-    VoterService
+    VoterService,
+    LocationValidator
 } from './events/index'
 
 declare let toastr: Toastr;
@@ -57,7 +58,8 @@ declare let jquery: Object;
         DurationPipe,
         SimpleModalComponent,
         ModalTriggerDirective,
-        UpVoteComponent
+        UpVoteComponent,
+        LocationValidator
     ],
     providers: [
         EventService,
