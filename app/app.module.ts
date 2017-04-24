@@ -25,7 +25,7 @@ import {
     EventService,
     EventDetailsComponent,
     CreateEventComponent,
-    EventRouteActivator,
+    EventResolver,
     EventListResolver,
     CreateSessionComponent,
     SessionListComponent,
@@ -73,7 +73,7 @@ declare let jquery: Object;
             provide: JQ_TOKEN,
             useValue: jQuery
         },
-        EventRouteActivator,
+        EventResolver,
         EventListResolver,
         {
             provide: 'canDeactivateCreateEvent',

@@ -7,10 +7,16 @@ import { userRoutes } from '../../user/user.routes';
 @Component({
     templateUrl: '/app/events/event-details/event-details.component.html',
     styles: [`
-        .container { padding-left:px; padding-rigth:20px; }
-        .event-image { height:100px; }
-        a { cursor:pointer }
-    `]
+        .container {
+            padding-left: px;
+            padding-rigth: 20px;
+        }
+        .event-image {
+            height: 100px;
+        }
+        a {
+            cursor: pointer
+        }`]
 })
 export class EventDetailsComponent {
     event: IEvent;
@@ -22,11 +28,10 @@ export class EventDetailsComponent {
     }
 
     ngOnInit() {
-        this.route.params.forEach((params: Params) => {
-            this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
+        this.route.data.forEach(data => {
+            this.event = data['event'];
             this.addMode = false;
         });
-
     }
 
     addSession() {
