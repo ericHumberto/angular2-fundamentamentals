@@ -9,12 +9,19 @@ import { AuthService } from './auth.service';
     `]
 })
 export class LoginComponent {
+    loginInvalid: boolean = false;
+
     constructor(private authService: AuthService,
         private router: Router) { }
 
     login(loginValues) {
-        this.authService.loginUser(loginValues.userName, loginValues.password);
-        this.router.navigate(['events']);
+        this.authService.loginUser(loginValues.userName, loginValues.password).subscribe(resp => {
+            if (!resp) {
+                this.loginInvalid = true;
+            } else {
+                this.router.navigate(['events']);
+            }
+        });
     }
 
     cancel() {
